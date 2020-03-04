@@ -2,7 +2,7 @@
  * @Author: lk
  * @Date: 2019-02-01 17:37:48
  * @Last Modified by: lk
- * @Last Modified time: 2019-03-19 18:00:53
+ * @Last Modified time: 2020-03-03 11:54:05
  */
 import axios from 'axios'
 import { Message } from 'element-ui'
@@ -83,6 +83,7 @@ service.interceptors.response.use(
           // localStorage.setItem('loginMsg', res.msg)
           store.dispatch('FedLogOut').then(() => {
             location.reload()// 为了重新实例化vue-router对象 避免bug
+            // window.top.location.href = 'http://localhost:9528/#/login'
           })
           // })
         }

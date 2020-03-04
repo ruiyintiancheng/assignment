@@ -1,7 +1,7 @@
 {
-  "name": "statute",
+  "name": "dataCollection",
   "version": "1.0.0",
-  "description": "statute",
+  "description": "dataCollection",
   "author": "LK",
   "license": "MIT",
   "scripts": {

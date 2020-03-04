@@ -2,7 +2,7 @@
  * @Author: lk
  * @Date: 2019-02-01 17:38:40
  * @Last Modified by: lk
- * @Last Modified time: 2019-12-23 10:55:13
+ * @Last Modified time: 2020-03-02 19:22:36
  */
 import router from './router'
 // import store from './store'
@@ -12,7 +12,7 @@ import { getToken } from '@/utils/auth' // getToken from cookie
 
 NProgress.configure({ showSpinner: false })// NProgress Configuration
 
-const whiteList = ['/login']// no redirect whitelist
+// const whiteList = ['/login']// no redirect whitelist
 
 router.beforeEach((to, from, next) => {
   NProgress.start() // start progress bar
@@ -34,13 +34,14 @@ router.beforeEach((to, from, next) => {
       // }
     }
   } else {
+    next()
     /* has no token*/
-    if (whiteList.indexOf(to.path) !== -1) { // 在免登录白名单，直接进入
-      next()
-    } else {
-      next('/login') // 否则全部重定向到登录页
-      NProgress.done() // if current page is login will not trigger afterEach hook, so manually handle it
-    }
+    // if (whiteList.indexOf(to.path) !== -1) { // 在免登录白名单，直接进入
+    //   next()
+    // } else {
+    //   next('/login') // 否则全部重定向到登录页
+    //   NProgress.done() // if current page is login will not trigger afterEach hook, so manually handle it
+    // }
   }
 })
 

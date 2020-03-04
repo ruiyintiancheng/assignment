@@ -1,22 +1,20 @@
 <template>
   <div class="app-wrapper" >
-    <navbar></navbar>
-    <div class="main-container" :style="{height:height+'px'}">
-      <app-main ref="appMain" :style="{minHeight:(height - 55)+'px',backgroundColor:conColor}">></app-main>
-      <bottom-bar></bottom-bar>
+    <div class="main-container" >
+      <sidebar class="sidebar-container"  :style="{height:(height)+'px',backgroundColor:'#3164b7'}"></sidebar>
+      <app-main class="app-main" ref="appMain" :style="{height:height+'px',backgroundColor:conColor}">></app-main>
     </div>
   </div>
 </template>
 
 <script>
-import { Navbar, AppMain, BottomBar } from './components'
+import { Sidebar, AppMain } from './components'
 
 export default {
   name: 'layout',
   components: {
-    Navbar,
     AppMain,
-    BottomBar
+    Sidebar
   },
   computed: {
     conColor: function() {
@@ -41,7 +39,7 @@ export default {
   },
   methods: {
     setCurrentHeight() {
-      this.height = document.body.offsetHeight - 60
+      this.height = document.body.offsetHeight
     }
   }
 }

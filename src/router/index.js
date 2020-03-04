@@ -1,8 +1,8 @@
 /*
  * @Author: lk
  * @Date: 2019-02-01 17:36:33
- * @Last Modified by: 1k
- * @Last Modified time: 2020-01-08 16:43:01
+ * @Last Modified by: lk
+ * @Last Modified time: 2020-02-27 10:40:01
  */
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -40,17 +40,12 @@ export const constantRouterMap = [
   { path: '*', redirect: '/404', hidden: true },
   {
     path: '',
-    name: 'home',
-    component: _import('dashboard/index')
-  },
-  {
-    path: '',
     component: Layout,
     children: [
       {
-        name: 'statistics',
-        path: '/statistics',
-        component: _import('statistics/index')
+        name: 'collectionSetting',
+        path: '/',
+        component: _import('collectionSetting/index')
       }
     ]
   },
@@ -59,9 +54,9 @@ export const constantRouterMap = [
     component: Layout,
     children: [
       {
-        name: 'analysis',
-        path: '/analysis',
-        component: _import('analysis/index')
+        name: 'task',
+        path: '/task',
+        component: _import('task/index')
       }
     ]
   },
@@ -70,9 +65,9 @@ export const constantRouterMap = [
     component: Layout,
     children: [
       {
-        name: 'learn',
-        path: '/learn',
-        component: _import('learn/index')
+        name: 'taskOption',
+        path: '/taskOption',
+        component: _import('task/components/taskOption')
       }
     ]
   },
@@ -81,64 +76,9 @@ export const constantRouterMap = [
     component: Layout,
     children: [
       {
-        name: 'search',
-        path: '/search',
-        component: _import('searchResult/index')
-      }
-    ]
-  },
-  {
-    path: '',
-    component: Layout,
-    children: [
-      {
-        name: 'user',
-        path: '/user',
-        component: _import('user/index')
-      }
-    ]
-  },
-  {
-    path: '',
-    component: Layout,
-    children: [
-      {
-        name: 'policy',
-        path: '/policy',
-        component: _import('policy/index')
-      }
-    ]
-  },
-  {
-    path: '',
-    component: Layout,
-    children: [
-      {
-        name: 'verbiage',
-        path: '/verbiage',
-        component: _import('verbiage/index')
-      }
-    ]
-  },
-  {
-    path: '',
-    component: Layout,
-    children: [
-      {
-        name: 'explain',
-        path: '/explain',
-        component: _import('explain/index')
-      }
-    ]
-  },
-  {
-    path: '',
-    component: Layout,
-    children: [
-      {
-        name: 'relationChart',
-        path: '/relationChart',
-        component: _import('relationChart/index')
+        name: 'journal',
+        path: '/journal',
+        component: _import('journal/index')
       }
     ]
   }
