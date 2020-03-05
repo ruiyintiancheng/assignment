@@ -2,7 +2,7 @@
  * @Author: lk 
  * @Date: 2020-02-26 15:34:09 
  * @Last Modified by: lk
- * @Last Modified time: 2020-03-04 16:42:59
+ * @Last Modified time: 2020-03-05 17:27:20
  * @Description:  数据源
  */
 <template>
@@ -68,7 +68,7 @@
                            label="编号"
                            align="center"
                            type="index"
-                           min-width="50">
+                           width="50">
           </el-table-column>
           <el-table-column prop="sourceName"
                            label="数据源名称"
@@ -205,7 +205,7 @@
 <script>
 import { baseSearch, baseRequest } from '@/api/base'
 import { saveUpdate } from '@/utils/validate'
-import { encode64 } from '@/utils'
+import { encode64 } from '@/utils/base64'
 const url = '/confSource/selects'
 export default {
   filters: {
@@ -238,14 +238,14 @@ export default {
           { required: true, message: '请填写此项' }
         ],
         sourceUrl: [
-          { required: true, message: '请填写此项' },
-          { validator: (rule, value, callback) => {
-            if (/(http|https|ftp):\/\/([\w.]+\/?)\S*/.test(value)) {
-              callback()
-            } else {
-              callback(new Error('格式不正确'))
-            }
-          } }
+          { required: true, message: '请填写此项' }
+          // { validator: (rule, value, callback) => {
+          //   if (/(http|https|ftp):\/\/([\w.]+\/?)\S*/.test(value)) {
+          //     callback()
+          //   } else {
+          //     callback(new Error('格式不正确'))
+          //   }
+          // } }
         ],
         sourceUsername: [
           { required: true, message: '请填写此项' },

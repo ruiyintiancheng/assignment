@@ -2,7 +2,7 @@
  * @Author: lk
  * @Date: 2019-03-11 15:47:27
  * @Last Modified by: lk
- * @Last Modified time: 2019-04-12 13:47:41
+ * @Last Modified time: 2020-03-05 16:15:05
  * @Description:  加密
  */
 import { JSEncrypt } from 'jsencrypt'
@@ -18,6 +18,7 @@ export function encrypt(key) {
       // 加密：要测试的明文数据
       const str = `${key}|${response.data.item.rand}`
       const publicKey = response.data.item.publicKey // 从后台获取公钥，这里省略，直接赋值
+      console.log(str, publicKey)
       const encryptor = new JSEncrypt() // 新建JSEncrypt对象
       encryptor.setPublicKey(publicKey) // 设置公钥
       const password = encryptor.encrypt(str) // 对密码进行加密

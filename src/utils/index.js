@@ -2,9 +2,8 @@
  * @Author: lk
  * @Date: 2019-02-01 17:37:24
  * @Last Modified by: lk
- * @Last Modified time: 2020-03-04 16:40:07
+ * @Last Modified time: 2020-03-05 16:29:50
  */
-import base64 from './base64'
 
 export function parseTime(time, cFormat) {
   if (arguments.length === 0) {
@@ -401,30 +400,3 @@ export function getSearchParam(options) {
   return data
 }
 
-export function encode64(input) {
-  return base64.encode(input)
-}
-// var _keyStr = '1234567890abcdef'
-// export function encode64(input) {
-//   var t = ''
-//   var n, r, i, s, o, u, a
-//   var f = 0
-//   var e = window.Base64._utf8_encode(e)
-//   while (f < e.length) {
-//     n = e.charCodeAt(f++)
-//     r = e.charCodeAt(f++)
-//     i = e.charCodeAt(f++)
-//     s = n >> 2
-//     o = (n & 3) << 4 | r >> 4
-//     u = (r & 15) << 2 | i >> 6
-//     a = i & 63
-//     if (isNaN(r)) {
-//       u = a = 64
-//     } else if (isNaN(i)) {
-//       a = 64
-//     }
-//     t = t + _keyStr.charAt(s) + _keyStr.charAt(o) + _keyStr.charAt(u) + _keyStr.charAt(a)
-//   }
-
-//   return t
-// }

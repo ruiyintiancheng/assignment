@@ -2,7 +2,7 @@
  * @Author: lk 
  * @Date: 2020-02-26 15:34:09 
  * @Last Modified by: lk
- * @Last Modified time: 2020-03-04 16:44:47
+ * @Last Modified time: 2020-03-05 17:36:32
  * @Description:  接口信息
  */
 <template>
@@ -64,6 +64,12 @@
                   v-show="tableToggle"
                   border
                   :height="tableHeight">
+                            <el-table-column 
+                           label="编号"
+                           align="center"
+                           type="index"
+                           width="50">
+          </el-table-column>
           <el-table-column prop="ifsName"
                            label="接口名称"
                            align="center"
@@ -315,7 +321,6 @@ export default {
       }
       const param = { ifsName: this.ifsName, pageNo: this.pageNo, pageSize: this.pageSize } // this.$refs.basicTable.getData(url, this.$refs.searchForm.searchParam())
       baseSearch(url, param).then(response => {
-        console.log(this.data)
         this.data = response.data.item
         this.total = response.data.total
         this.pageSize = response.data.pageSize

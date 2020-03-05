@@ -2,7 +2,7 @@
  * @Author: lk 
  * @Date: 2020-02-26 15:34:09 
  * @Last Modified by: lk
- * @Last Modified time: 2020-03-04 16:42:43
+ * @Last Modified time: 2020-03-05 16:30:24
  * @Description:  代理服务
  */
 <template>
@@ -64,6 +64,12 @@
                   v-show="tableToggle"
                   border
                   :height="tableHeight">
+                            <el-table-column 
+                           label="编号"
+                           align="center"
+                           type="index"
+                           width="50">
+          </el-table-column>
           <el-table-column prop="agntName"
                            label="代理名称"
                            align="center"
@@ -202,7 +208,7 @@
 <script>
 import { baseSearch, baseRequest } from '@/api/base'
 import { saveUpdate } from '@/utils/validate'
-import { encode64 } from '@/utils'
+import { encode64 } from '@/utils/base64'
 const url = '/confAgnt/selects'
 export default {
   filters: {

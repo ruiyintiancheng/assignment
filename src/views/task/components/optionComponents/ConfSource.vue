@@ -2,7 +2,7 @@
  * @Author: lk 
  * @Date: 2020-03-02 09:42:50 
  * @Last Modified by: lk
- * @Last Modified time: 2020-03-04 16:13:51
+ * @Last Modified time: 2020-03-05 16:30:44
  * @Description:  数据源
  */
  <template>
@@ -64,7 +64,8 @@
  
 <script>
 import { saveUpdate } from '@/utils/validate'
-import { deepClone, encode64 } from '@/utils'
+import { deepClone } from '@/utils'
+import { encode64 } from '@/utils/base64'
 export default {
   props: {
     operateId: [Number, String, Object],
@@ -84,14 +85,14 @@ export default {
           { required: true, message: '请填写此项' }
         ],
         sourceUrl: [
-          { required: true, message: '请填写此项' },
-          { validator: (rule, value, callback) => {
-            if (/(http|https|ftp):\/\/([\w.]+\/?)\S*/.test(value)) {
-              callback()
-            } else {
-              callback(new Error('格式不正确'))
-            }
-          } }
+          { required: true, message: '请填写此项' }
+          // { validator: (rule, value, callback) => {
+          //   if (/(http|https|ftp):\/\/([\w.]+\/?)\S*/.test(value)) {
+          //     callback()
+          //   } else {
+          //     callback(new Error('格式不正确'))
+          //   }
+          // } }
         ],
         sourceUsername: [
           { required: true, message: '请填写此项' },

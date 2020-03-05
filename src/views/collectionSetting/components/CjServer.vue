@@ -64,6 +64,12 @@
                   v-show="tableToggle"
                   border
                   :height="tableHeight">
+                            <el-table-column 
+                           label="编号"
+                           align="center"
+                           type="index"
+                           width="50">
+          </el-table-column>
           <el-table-column prop="sysIp"
                            label="服务器IP"
                            align="center"

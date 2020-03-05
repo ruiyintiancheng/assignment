@@ -2,7 +2,7 @@
  * @Author: lk 
  * @Date: 2020-03-02 09:42:50 
  * @Last Modified by: lk
- * @Last Modified time: 2020-03-04 14:26:21
+ * @Last Modified time: 2020-03-05 16:30:30
  * @Description:  代理服务
  */
  <template>
@@ -93,7 +93,8 @@
  
 <script>
 import { baseRequest } from '@/api/base'
-import { deepClone, encode64 } from '@/utils'
+import { deepClone } from '@/utils'
+import { encode64 } from '@/utils/base64'
 import { saveUpdate } from '@/utils/validate'
 export default {
   props: {
