@@ -2,7 +2,7 @@
  * @Author: lk 
  * @Date: 2020-03-02 09:42:50 
  * @Last Modified by: lk
- * @Last Modified time: 2020-03-04 14:44:08
+ * @Last Modified time: 2020-03-09 17:32:07
  * @Description:  其他下载
  */
  <template>
@@ -49,6 +49,11 @@
                       <el-option v-for="(text,value) in item" :key="value" :value="value" :label="text"></el-option>        
                   </el-select>
                   <el-button plain @click="add">创建</el-button>
+              </el-form-item>
+              <el-form-item prop="protAnysPage"
+                                label="解析类型">
+                  <el-radio v-model="formData.protAnysPage" label="0">{{protAnysType === '0'?'普通翻页':'解析操作'}}</el-radio>
+                  <el-radio v-model="formData.protAnysPage" label="1" v-if="protAnysType === '0'">追加翻页</el-radio>
               </el-form-item>
         </el-form>
 
@@ -134,6 +139,15 @@ export default {
     operateId: [Number, String, Object],
     operateStatus: Number
   },
+  computed: {
+    protAnysType: function() {
+      if (this.operateStatus === 2) {
+        return this.operateId.row.protAnysType
+      } else {
+        return this.operateId
+      }
+    }
+  },
   mounted() {
     baseRequest('/confIfs/getConfIfsSelect').then(response => {
       this.item = response.data.item
@@ -155,27 +169,25 @@ export default {
           { max: 256, message: '不能超过256个字' }
         ],
         protAnysHtml: [
-          { required: true, message: '请填写此项' },
           { max: 4000, message: '不能超过4000个字' }
         ],
         protAnysZz: [
-          { required: true, message: '请填写此项' },
           { max: 1000, message: '不能超过1000个字' }
         ],
         protAnysChar: [
-          { required: true, message: '请填写此项' },
           { max: 4000, message: '不能超过4000个字' }
-        ],
-        protAnysIfsId: [
-          { required: true, message: '请填写此项' }
         ]
+        // protAnysIfsId: [
+        //   { required: true, message: '请填写此项' }
+        // ]
       },
       formData: {
         protAnysTittle: null,
         protAnysHtml: null,
         protAnysZz: null,
         protAnysChar: null,
-        protAnysIfsId: null
+        protAnysIfsId: null,
+        protAnysPage: '0'
       },
 
       visable: false,
@@ -233,9 +245,17 @@ export default {
       this.visable = true
     },
     saveCurrent(callback) {
+      if (!this.formData.protAnysHtml && !this.formData.protAnysZz && !this.formData.protAnysChar && (!this.formData.protAnysIfsId && this.formData.protAnysIfsId !== 0)) {
+        this.$message.warning('请填写至少一个解析规则')
+        return
+      }
       this.$refs.updateFrom.validate((valid) => {
         if (valid) {
-          this.formData.protAnysIfsName = this.item[this.formData.protAnysIfsId]
+          this.formData.protAnysIfsName = this.item[this.formData.protAnysIfsId] || null
+          this.formData.protAnysType = this.protAnysType
+          if (this.protAnysType === '1') {
+            delete this.formData.protAnysPage
+          }
           callback && callback(this.formData)
         } else {
           return false

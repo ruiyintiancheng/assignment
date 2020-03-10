@@ -2,7 +2,7 @@
  * @Author: lk 
  * @Date: 2020-02-26 15:34:09 
  * @Last Modified by: lk
- * @Last Modified time: 2020-03-03 16:38:01
+ * @Last Modified time: 2020-03-09 16:59:31
  * @Description:  采集服务器
  */
 <template>
@@ -25,56 +25,89 @@
                            label="服务器总线程数"
                            align="center"
                            min-width="200">
+                           <template slot-scope="scope">
+                             {{scope.row.sysTAllNum | unitGe}}
+                           </template>
           </el-table-column>
           <el-table-column prop="sysTRemNum"
                            label="服务器当前可用线程数"
                            align="center"
                            min-width="200">
+                            <template slot-scope="scope">
+                             {{scope.row.sysTRemNum | unitGe}}
+                           </template>
           </el-table-column>
           <el-table-column prop="sysTUseNum"
                            label="服务器已用线程数"
                            align="center"
                            min-width="200">
+                            <template slot-scope="scope">
+                             {{scope.row.sysTUseNum | unitGe}}
+                           </template>
           </el-table-column>
           <el-table-column prop="sysCpuNum"
                            label="服务器CPU核数"
                            align="center"
                            min-width="200">
+                           <template slot-scope="scope">
+                             {{scope.row.sysCpuNum | unitGe}}
+                           </template>
           </el-table-column>
           <el-table-column prop="sysRamAllNum"
                            label="服务器内存"
                            align="center"
                            min-width="200">
+                           <template slot-scope="scope">
+                             {{scope.row.sysRamAllNum | unitKb}}
+                           </template>
           </el-table-column>
           <el-table-column prop="sysRamUseNum"
                            label="服务器已用内存"
                            align="center"
                            min-width="200">
+                           <template slot-scope="scope">
+                             {{scope.row.sysRamAllNum | unitKb}}
+                           </template>
           </el-table-column>
           <el-table-column prop="sysRamRemNum"
                            label="服务器可用内存"
                            align="center"
                            min-width="200">
+                           <template slot-scope="scope">
+                             {{scope.row.sysRamRemNum | unitKb}}
+                           </template>
           </el-table-column>
           <el-table-column prop="sysDiskAllNum"
                            label="服务器磁盘空间"
                            align="center"
                            min-width="200">
+                           <template slot-scope="scope">
+                             {{scope.row.sysDiskAllNum | unitKb}}
+                           </template>
           </el-table-column>
           <el-table-column prop="sysDiskUseNum"
                            label="服务器磁盘已用空间"
                            align="center"
                            min-width="200">
+                           <template slot-scope="scope">
+                             {{scope.row.sysDiskUseNum | unitKb}}
+                           </template>
           </el-table-column>
           <el-table-column prop="sysRamAllNum"
                            label="服务器内存"
                            align="center"
                            min-width="200">
+                           <template slot-scope="scope">
+                             {{scope.row.sysRamAllNum | unitKb}}
+                           </template>
           </el-table-column>
           <el-table-column prop="sysDiskRemNum"
                            label="服务器磁盘可用空间"
                            align="center"
                            min-width="200">
+                           <template slot-scope="scope">
+                             {{scope.row.sysDiskRemNum | unitKb}}
+                           </template>
           </el-table-column>
           <el-table-column prop="sysStateStr"
                            label="状态标志"

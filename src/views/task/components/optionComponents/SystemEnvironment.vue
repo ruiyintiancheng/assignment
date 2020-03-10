@@ -2,7 +2,7 @@
  * @Author: lk 
  * @Date: 2020-03-02 09:42:50 
  * @Last Modified by: lk
- * @Last Modified time: 2020-03-04 15:59:42
+ * @Last Modified time: 2020-03-09 15:28:26
  * @Description:  系统环境
  */
  <template>
@@ -96,7 +96,7 @@ export default {
     baseRequest('/confSystem/getSystemSelect').then(response => {
       this.item = response.data.item
       if (this.operateStatus === 2) {
-        this.updateFormData.systemEnvironment = this.operateId
+        this.updateFormData.systemEnvironment = this.operateId + ''
       }
     })
   },

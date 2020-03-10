@@ -2,7 +2,7 @@
  * @Author: lk 
  * @Date: 2020-02-26 15:34:09 
  * @Last Modified by: lk
- * @Last Modified time: 2020-03-03 16:38:59
+ * @Last Modified time: 2020-03-09 18:14:11
  * @Description:  采集任务
  */
 <template>
@@ -79,7 +79,7 @@
                            align="center"
                            min-width="200">
                 <template slot-scope="scope">
-                  <el-button @click="currentProtId=scope.row.protId;cjVisible=true" type="text">{{scope.row.sysCount}}</el-button>
+                  <el-button @click="currentProtId=scope.row.protId;cjVisible=true" type="text">{{scope.row.sysCount | unitGe}}</el-button>
                 </template>
           </el-table-column>
           <el-table-column prop="agntCount"
@@ -87,7 +87,7 @@
                            align="center"
                            min-width="200">
                 <template slot-scope="scope">
-                  <el-button @click="currentProtId=scope.row.protId;dlVisible=true" type="text">{{scope.row.agntCount}}</el-button>
+                  <el-button @click="currentProtId=scope.row.protId;dlVisible=true" type="text">{{scope.row.agntCount | unitGe}}</el-button>
                 </template>
           </el-table-column>
           <el-table-column prop="sourceName"
@@ -131,9 +131,17 @@
                          type="danger"
                          @click="deleteForm(scope.row)">删除</el-button>
               <el-button size="mini"
+                          v-if="scope.row.protStateStr === '停用'"
                          plain
                          type="success"
+                         @click="startTask(scope.row)"
                          >立即启动</el-button>
+              <el-button size="mini"
+                          v-if="scope.row.protStateStr === '启用'"
+                         plain
+                         type="danger"
+                         @click="stopTask(scope.row)"
+                         >停止任务</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -251,6 +259,28 @@ export default {
         type: 'warning'
       }).then(() => {
         baseRequest('/confProtInfo/delete', { protId: row.protId }).then(response => {
+          this.$Message.success('操作成功')
+          this.searchOption()
+        })
+      })
+    },
+    startTask(row) {
+      this.$confirm('确定启动该任务吗?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消'
+      }).then(() => {
+        baseRequest('/confProtInfo/startTask', { protId: row.protId }).then(response => {
+          this.$Message.success('操作成功')
+          this.searchOption()
+        })
+      })
+    },
+    stopTask(row) {
+      this.$confirm('确定停止该任务吗, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消'
+      }).then(() => {
+        baseRequest('/confProtInfo/stopTask', { protId: row.protId }).then(response => {
           this.$Message.success('操作成功')
           this.searchOption()
         })

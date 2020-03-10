@@ -2,7 +2,7 @@
  * @Author: lk 
  * @Date: 2020-03-02 09:42:50 
  * @Last Modified by: lk
- * @Last Modified time: 2020-03-02 17:00:06
+ * @Last Modified time: 2020-03-09 16:18:23
  * @Description:  不跟踪HTML
  */
  <template>
@@ -36,7 +36,7 @@ export default {
     baseRequest('/confProtFilt/getProtFiltSelect').then(response => {
       this.item = response.data.item
       if (this.operateStatus === 2) {
-        this.updateFormData.confFit = this.operateId
+        this.updateFormData.confFit = this.operateId + ''
       }
     })
   },

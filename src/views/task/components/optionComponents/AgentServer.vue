@@ -2,7 +2,7 @@
  * @Author: lk 
  * @Date: 2020-03-02 09:42:50 
  * @Last Modified by: lk
- * @Last Modified time: 2020-03-05 16:30:30
+ * @Last Modified time: 2020-03-09 15:29:08
  * @Description:  代理服务
  */
  <template>
@@ -105,7 +105,7 @@ export default {
     baseRequest('/confAgnt/getConfAgntSelect').then(response => {
       this.item = response.data.item
       if (this.operateStatus === 2) {
-        this.updateFormData.agentServer = this.operateId
+        this.updateFormData.agentServer = this.operateId + ''
       }
     })
   },
